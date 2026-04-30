@@ -1,0 +1,22 @@
+# Data
+data/*
+!data/.gitkeep
+
+# Models
+models/*
+!models/.gitkeep
+
+# Checkpoints
+checkpoints/*
+!checkpoints/.gitkeep
+
+# Cache
+cache/*
+!cache/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.idea/

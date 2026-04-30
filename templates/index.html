@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🐱🐶 Cats vs Dogs Classifier</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        text-align: center;
+        background-color: #f9f9f9;
+      }
+
+      h1 { margin-bottom: 20px; }
+
+      #container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+      }
+
+      .top-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
+
+      input, button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* PREVIEW BOX WITH BORDER */
+      .preview-container {
+        margin: 20px auto;
+        width: 350px;
+        height: 350px; /* Fixed height to keep border visible */
+        border: 2px dashed #ccc; /* Dashed border for the 'placeholder' look */
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        overflow: hidden;
+      }
+
+      #preview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none; /* Hidden until image is selected */
+      }
+
+      /* INSTRUCTION / RESULT TEXT */
+      #result {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 1.2;
+        color: #333;
+        min-height: 60px; /* Prevents layout jumping */
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <img src="/assets/cat.png" class="top-image" alt="Cat" />
+      <img src="/assets/dog.jpg" class="top-image" alt="Dog" />
+    </div>
+
+    <h1>Cats vs Dogs Classifier</h1>
+
+    <input type="file" id="fileInput" accept="image/*" />
+    <br />
+    <button id="predictBtn">Predict</button>
+
+    <div class="preview-container">
+      <img id="preview" alt="Image Preview" />
+    </div>
+
+    <div id="result">Upload an image and click Predict</div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
