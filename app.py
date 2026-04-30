@@ -10,7 +10,6 @@ from fastapi.staticfiles import StaticFiles
 from PIL import Image
 import uvicorn
 
-# Ensure core directories exist
 os.makedirs("models", exist_ok=True)
 os.makedirs("static", exist_ok=True)
 os.makedirs("assets", exist_ok=True)
@@ -18,9 +17,8 @@ os.makedirs("templates", exist_ok=True)
 
 app = FastAPI()
 
-# ==========================
-# AUTO-DETECT MODEL PATH
-# ==========================
+# MODEL PATH
+
 MODEL_BASE_DIR = "models"
 ZIP_PATH = os.path.join(MODEL_BASE_DIR, "saved_model.zip")
 FILE_ID = "1HEQEZsxN6iagYXLNXqCAAEFLwSxtGUG7"
@@ -28,15 +26,13 @@ URL = f"https://drive.google.com/uc?id={FILE_ID}"
 
 
 def find_model_path(root_dir):
-    """Recursively search for the directory containing saved_model.pb"""
     for root, dirs, files in os.walk(root_dir):
         if "saved_model.pb" in files:
             return root
     return None
 
 
-# 1. Download and Extract
-# We only download if we can't find a .pb file anywhere in 'models'
+# Download and Extract
 existing_path = find_model_path(MODEL_BASE_DIR)
 
 if not existing_path:
@@ -48,10 +44,9 @@ if not existing_path:
     with zipfile.ZipFile(ZIP_PATH, "r") as zip_ref:
         zip_ref.extractall(MODEL_BASE_DIR)
 
-    # Check again after extraction
     existing_path = find_model_path(MODEL_BASE_DIR)
 
-# 2. Load Model
+# Load Model
 model = None
 if existing_path:
     print(f"Found SavedModel at: {existing_path}")
@@ -65,9 +60,7 @@ if existing_path:
 else:
     print("CRITICAL: saved_model.pb not found after extraction!")
 
-# ==========================
 # SERVE FRONTEND
-# ==========================
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
@@ -82,9 +75,7 @@ def home():
         return HTMLResponse("index.html missing in templates folder", status_code=404)
 
 
-# ==========================
 # PREDICTION API
-# ==========================
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     if model is None:

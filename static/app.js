@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Using innerHTML and <br> for the stacked look
             const confidencePercent = (data.confidence * 100).toFixed(2);
             resultText.innerHTML = `Prediction: ${data.prediction}<br>Confidence: ${confidencePercent}%`;
 

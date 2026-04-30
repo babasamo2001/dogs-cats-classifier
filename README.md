@@ -3,7 +3,7 @@ Cats vs Dogs Image Classification ML App
 A production-ready Deep Learning web application that classifies images of cats and dogs using a custom Convolutional Neural Network (CNN).
 
 Live Demo:
-https://dogs-cats-classifier-ztd3.onrender.com
+https://dogs-cats-classifier-baseline-cnn.onrender.com
 
 The trained model is exposed through a FastAPI backend and hosted on Render, allowing users to upload images through a web interface and receive real-time predictions.
 
@@ -35,7 +35,7 @@ dogs
 The dataset is not included in this repository (excluded via .gitignore due to size constraints).  
 Only the trained model, hosted on Google Drive, is required for inference.
 
-Download the trained model here:
+Download the dataset here:
 
 https://www.kaggle.com/datasets/bhavikjikadara/dog-and-cat-classification-dataset?resource=download
 
@@ -149,14 +149,18 @@ AUC Score: 0.93
 Saved artifacts:
 
 models/
-
+saved_model/
+    assets/
+    variables/
+    fingerprint.pb
+    saved_model.pb
 best_model.keras
 final_model.keras
 
 logs/training_log.csv
 
 Where:
-
+saved_model.pb → Model uploaded to Google Drive
 best_model.keras → Best validation model  
 final_model.keras → Final trained model  
 training_log.csv → Training history  
@@ -193,7 +197,7 @@ Probability output
 Example output:
 
 Prediction: Cat  
-Probability: 99.16%
+Probability: 99.32%
 ![User interface](assets/ui.png)
 
 #Installation & Usage
