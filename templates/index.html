@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>🐱🐶 Cats vs Dogs Classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cats vs Dogs Classifier</title>
+
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -35,12 +37,11 @@
         cursor: pointer;
       }
 
-      /* PREVIEW BOX WITH BORDER */
       .preview-container {
         margin: 20px auto;
         width: 350px;
-        height: 350px; /* Fixed height to keep border visible */
-        border: 2px dashed #ccc; /* Dashed border for the 'placeholder' look */
+        height: 350px;
+        border: 2px dashed #ccc;
         border-radius: 15px;
         display: flex;
         align-items: center;
@@ -53,7 +54,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: none; /* Hidden until image is selected */
+        display: none;
       }
 
       /* INSTRUCTION / RESULT TEXT */
@@ -63,10 +64,69 @@
         font-weight: 900;
         line-height: 1.2;
         color: #333;
-        min-height: 60px; /* Prevents layout jumping */
+        min-height: 60px;
       }
+
+      @media (max-width: 768px) {
+
+        body {
+          margin: 20px;
+        }
+
+        #container {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .top-image {
+          width: 70px;
+          height: 70px;
+        }
+
+        .preview-container {
+          width: 100%;
+          max-width: 320px;
+          height: 320px;
+        }
+
+        input, button {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+
+        #result {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+
+        .preview-container {
+          height: 280px;
+        }
+
+        .top-image {
+          width: 60px;
+          height: 60px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+
+        #result {
+          font-size: 18px;
+        }
+      }
+
     </style>
   </head>
+
   <body>
 
     <div id="container">
