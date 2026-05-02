@@ -124,6 +124,17 @@
         }
       }
 
+      .note {
+  max-width: 600px;
+  margin: 10px auto 20px auto;
+  padding: 12px;
+  font-size: 14px;
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+}
+
     </style>
   </head>
 
@@ -135,6 +146,11 @@
     </div>
 
     <h1>Cats vs Dogs Classifier</h1>
+
+    <div class="note">
+  ⚠️ This model is trained only on cat and dog images.
+      Uploading other images (e.g., humans, cars, or objects) may produce incorrect predictions.
+    </div>
 
     <input type="file" id="fileInput" accept="image/*" />
     <br />
